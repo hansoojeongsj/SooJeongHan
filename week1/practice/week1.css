@@ -1,0 +1,20 @@
+body {
+  background-color:antiquewhite;
+}
+
+p {
+  color:cornflowerblue;
+  font-weight: bold;
+}
+.headings { 
+  color: deepskyblue; 
+  text-decoration: overline; 
+}
+.hungry{
+  background-color: yellow;
+  color: red;
+  width: fit-content;
+}
+#subhungry {
+  background-color: pink;
+}
