@@ -1,7 +1,12 @@
 body {
   background-color:antiquewhite;
 }
-
+header {
+  display: flex;
+  justify-content: center;
+  background-color: navy;
+  color: white;
+}
 p {
   color:cornflowerblue;
   font-weight: bold;
