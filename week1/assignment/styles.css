@@ -85,6 +85,7 @@ aside i {
 .button i {
   margin: 0 10px;
 }
+
 .gallery-title {
   padding: 2%;
   font-size: 2rem;
@@ -102,6 +103,7 @@ aside i {
   display: flex;
   width: max-content; 
   animation: slide 30s linear infinite;
+
 }
 
 .image-gallery img {
@@ -123,4 +125,41 @@ aside i {
   100% {
     transform: translateX(-50%); 
   }
+}
+
+.scroll-view {
+  display: flex;
+  width: 100%;
+  position: relative;
+  margin-bottom: 3%;
+}
+
+.scroll-button {
+  background: rgb(100, 100, 100);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 10px;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  text-decoration: none;
+}
+
+.scroll-view-wrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+}
+
+.scroll-view-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-view-wrapper img {
+  width: 250px;
+  height: auto;
+  border-radius: 15px;
 }
