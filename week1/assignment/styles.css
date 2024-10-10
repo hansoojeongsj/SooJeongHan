@@ -1,5 +1,7 @@
 @import "./reset.css";
-
+body {
+  background-color: black;
+}
 header {
   position: fixed;
   display: flex;
@@ -30,13 +32,13 @@ nav {
 }
 
 aside {
-  min-width: 108px;
-  font-size: 2rem;
+  min-width: 138px;
+  color: white;
 }
 
 aside i {
-  color: white;
   margin-right: 10%;
+  font-size: 2rem;
 }
 
 .homebanner-img {
@@ -55,7 +57,7 @@ aside i {
   align-items: flex-end;
 }
 
-p {
+.homebanner-text p {
   padding: 8%;
   background-color: white;
   color: darkgreen;
@@ -74,10 +76,51 @@ p {
   background-color: rgba(80, 80, 80, 0.5);
   border-radius: 10px;
   font-size: 1.7rem;
+  transition: background-color 0.3s ease;
+}
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .button i {
   margin: 0 10px;
 }
+.gallery-title {
+  padding: 2%;
+  font-size: 2rem;
+  color: white;
+  margin-top: 2%;
+}
 
+.image-gallery {
+  display: flex;
+  overflow: hidden;
+  margin: 0 30px;
+}
 
+.image-gallery-wrapper {
+  display: flex;
+  width: max-content; 
+  animation: slide 30s linear infinite;
+}
+
+.image-gallery img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  padding: 0 10px;
+}
+
+.image-gallery img:hover {
+  transform: scale(1.2);
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); 
+  }
+}
