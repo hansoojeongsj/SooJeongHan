@@ -16,7 +16,7 @@ header {
 header a {
   text-decoration: none;
   margin-right: 5%;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: white;
 }
 
@@ -31,7 +31,7 @@ nav {
 }
 
 aside {
-  min-width: 138px;
+  min-width: 144px;
 }
 
 aside i {
@@ -127,7 +127,6 @@ aside i {
 .scroll-view {
   display: flex;
   width: 100%;
-  position: relative;
   margin-bottom: 3%;
 }
 
