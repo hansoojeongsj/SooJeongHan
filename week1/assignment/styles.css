@@ -9,13 +9,17 @@ header {
   justify-content: space-between;
   width: 100%;
   background-color: transparent;
-  padding: 1% 1.5%;
+  padding: 1.5rem;
   box-sizing: border-box; 
+}
+@media (max-width: 76.8rem) {
+  header {
+    padding: 1rem 0.5rem;
+  }
 }
 
 header a {
   text-decoration: none;
-  margin-right: 5%;
   font-size: 2rem;
   color: white;
 }
@@ -23,22 +27,30 @@ header a {
 nav {
   display: flex;
   align-items: center;
+  gap:3rem;
 }
-
+@media (max-width: 76.8rem) {
+  nav {
+    gap:1.5rem;
+  }
+}
 .logo {
-  width: 10%;
-  margin-right: 3%;
+  width: 5rem;
 }
 
 .icon-links {
-  min-width: 144px;
+  min-width: 14.4rem;
 }
 
 .icon-links i {
-  margin-right: 10%;
+  margin-right: 2.5rem;
   font-size: 2rem;
 }
-
+@media (max-width: 76.8rem) {
+  .icon-links i {
+    margin-right: 1.5rem;
+  }
+}
 .homebanner-img {
   width: 100%;
   height: 80vh;
@@ -46,33 +58,33 @@ nav {
 }
 
 .homebanner-text {
-  min-width: 300px;
+  min-width: 30rem;
   position: absolute;
-  top: 60%;
-  right: 5%;
+  top: 55vh;
+  right: 7rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  gap: 0.5rem
 }
 
 .homebanner-text p {
-  padding: 8%;
+  padding: 2.5rem;
   background-color: white;
   color: darkgreen;
   font-weight: bold;
   font-size: 3rem;
-  border-radius: 10px;
+  border-radius: 1rem;
   display: flex;
   justify-content: center;
-  margin-bottom: 1%;
 }
 
 .button {
   text-decoration: none;
-  padding: 5%;
+  padding: 2rem;
   background-color: rgba(80, 80, 80, 0.5);
   color: white;
-  border-radius: 10px;
+  border-radius: 1rem;
   font-size: 1.7rem;
   transition: background-color 0.3s ease;
 }
@@ -81,20 +93,20 @@ nav {
 }
 
 .button i {
-  margin: 0 10px;
+  margin: 0 1rem;
 }
 
 .gallery-title {
-  padding: 2%;
+  padding: 2rem;
   font-size: 2rem;
-  margin-top: 2%;
+  margin-top: 2rem;
   color: white;
 }
 
 .image-gallery {
   display: flex;
   overflow: hidden;
-  margin: 0 30px;
+  margin: 0 3rem;
 }
 
 .image-gallery-wrapper {
@@ -104,11 +116,11 @@ nav {
 }
 
 .image-gallery img {
-  width: 250px;
-  height: 250px;
+  width: 25rem;
+  height: 25rem;
   object-fit: cover;
   transition: transform 0.5s ease;
-  padding: 0 10px;
+  padding: 0 1rem;
 }
 
 .image-gallery img:hover {
@@ -127,16 +139,15 @@ nav {
 .scroll-view {
   display: flex;
   width: 100%;
-  margin-bottom: 3%;
+  margin-bottom: 5rem;
 }
 
 .scroll-button {
   background: rgb(100, 100, 100);
   color: white;
-  border: none;
   cursor: pointer;
-  font-size: 24px;
-  padding: 10px;
+  font-size: 2.4rem;
+  padding: 1rem;
   display: flex;
   align-items: center; 
   justify-content: center; 
@@ -147,7 +158,7 @@ nav {
   display: flex;
   overflow-x: scroll;
   scroll-behavior: smooth;
-  gap: 20px;
+  gap: 2rem;
 }
 
 .scroll-view-wrapper::-webkit-scrollbar {
@@ -155,7 +166,6 @@ nav {
 }
 
 .scroll-view-wrapper img {
-  width: 250px;
-  height: auto;
-  border-radius: 15px;
+  width: 25rem;
+  border-radius: 1.5rem;
 }
