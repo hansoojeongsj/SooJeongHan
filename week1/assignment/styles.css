@@ -1,0 +1,171 @@
+@import "./reset.css";
+body {
+  background-color: black;  
+}
+header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: transparent;
+  padding: 1.5rem;
+  box-sizing: border-box; 
+}
+@media (max-width: 76.8rem) {
+  header {
+    padding: 1rem 0.5rem;
+  }
+}
+
+header a {
+  text-decoration: none;
+  font-size: 2rem;
+  color: white;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap:3rem;
+}
+@media (max-width: 76.8rem) {
+  nav {
+    gap:1.5rem;
+  }
+}
+.logo {
+  width: 5rem;
+}
+
+.icon-links {
+  min-width: 14.4rem;
+}
+
+.icon-links i {
+  margin-right: 2.5rem;
+  font-size: 2rem;
+}
+@media (max-width: 76.8rem) {
+  .icon-links i {
+    margin-right: 1.5rem;
+  }
+}
+.homebanner-img {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+}
+
+.homebanner-text {
+  min-width: 30rem;
+  position: absolute;
+  top: 55vh;
+  right: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem
+}
+
+.homebanner-text p {
+  padding: 2.5rem;
+  background-color: white;
+  color: darkgreen;
+  font-weight: bold;
+  font-size: 3rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  text-decoration: none;
+  padding: 2rem;
+  background-color: rgba(80, 80, 80, 0.5);
+  color: white;
+  border-radius: 1rem;
+  font-size: 1.7rem;
+  transition: background-color 0.3s ease;
+}
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.button i {
+  margin: 0 1rem;
+}
+
+.gallery-title {
+  padding: 2rem;
+  font-size: 2rem;
+  margin-top: 2rem;
+  color: white;
+}
+
+.image-gallery {
+  display: flex;
+  overflow: hidden;
+  margin: 0 3rem;
+}
+
+.image-gallery-wrapper {
+  display: flex;
+  width: max-content; 
+  animation: slide 30s linear infinite;
+}
+
+.image-gallery img {
+  width: 25rem;
+  height: 25rem;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  padding: 0 1rem;
+}
+
+.image-gallery img:hover {
+  transform: scale(1.2);
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); 
+  }
+}
+
+.scroll-view {
+  display: flex;
+  width: 100%;
+  margin-bottom: 5rem;
+}
+
+.scroll-button {
+  background: rgb(100, 100, 100);
+  color: white;
+  cursor: pointer;
+  font-size: 2.4rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  text-decoration: none;
+}
+
+.scroll-view-wrapper {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  gap: 2rem;
+}
+
+.scroll-view-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-view-wrapper img {
+  width: 25rem;
+  border-radius: 1.5rem;
+}
