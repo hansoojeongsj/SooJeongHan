@@ -30,11 +30,11 @@ nav {
   margin-right: 3%;
 }
 
-aside {
+.icon-links {
   min-width: 144px;
 }
 
-aside i {
+.icon-links i {
   margin-right: 10%;
   font-size: 2rem;
 }
