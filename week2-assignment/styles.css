@@ -4,11 +4,11 @@ body {
   background-color:#d4dae6;
 }
 
+/*header*/
 header ul {
   display: flex;
   background-color: #9dbbd5;
 }
-
 li {
   flex: 1;
   text-align: center;
@@ -16,15 +16,81 @@ li {
   font-weight: bold;
   font-size: 1.5rem;
 }
-
 li:first-child {
   text-align: left;
 }
-
 li:nth-child(2) {
   font-size: 2rem;
 }
-
 li:last-child {
   text-align: right;
+}
+
+/*filter*/
+.filters {
+  background-color: #9dbbd5; 
+  width: 100rem; 
+  margin: 2rem auto; 
+  padding: 2rem; 
+  border-radius: 1rem;
+}
+.filter-group {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+.filter-item {
+  display: flex;
+}
+.filter-item:nth-child(1), 
+.filter-item:nth-child(2) {
+  grid-column: 1 / span 6;
+}
+.filter-item:nth-child(3),
+.filter-item:nth-child(4),
+.filter-item:nth-child(5) {
+  grid-column: span 2;
+}
+.filter-item:nth-child(6),
+.filter-item:nth-child(7){
+  grid-column: span 3;
+}
+.filter-item label {
+  background-color: #e9ecef;
+  padding: 1.5rem 1rem;
+  border: none;
+  width: 12rem;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.filter-item input, .filter-item select {
+  background-color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  flex-grow: 1;
+}
+
+/*filter-button*/
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  
+}
+.button-group button {
+  flex: 1;
+  padding: 1rem;
+  border-style: none;
+  border-radius: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.button-group button:first-child{
+  background-color: #4a6171;
+  color: white;
+}
+.button-group button:last-child{
+  background-color: #799fc4;
+  color: white;
 }
