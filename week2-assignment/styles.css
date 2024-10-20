@@ -1,1 +1,30 @@
 @import "reset.css";
+
+body {
+  background-color:#d4dae6;
+}
+
+header ul {
+  display: flex;
+  background-color: #9dbbd5;
+}
+
+li {
+  flex: 1;
+  text-align: center;
+  padding: 2rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+li:first-child {
+  text-align: left;
+}
+
+li:nth-child(2) {
+  font-size: 2rem;
+}
+
+li:last-child {
+  text-align: right;
+}
