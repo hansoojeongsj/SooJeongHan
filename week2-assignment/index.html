@@ -67,6 +67,33 @@
         <button type="submit">검색</button>
       </div>
     </section>
+    
+    <section class="table">
+      <div class="button-table">
+        <button id="delete-selected">선택 삭제</button>
+        <button id="add-member">추가</button>
+      </div>
+    
+      <table id="members-table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" id="select-all"></th>
+            <th>이름</th>
+            <th>영문 이름</th>
+            <th>GitHub</th>
+            <th>성별</th>
+            <th>역할</th>
+            <th>1주차 금잔디</th>
+            <th>2주차 금잔디</th>
+          </tr>
+        </thead>
+        <tbody id="members-tbody">
+          <!-- JavaScript로 동적으로 데이터가 들어갈 곳 -->
+        </tbody>
+      </table>
+    </section>
   </main>
+  <script type="module" src="script.js"></script>
+
 </body>
 </html>

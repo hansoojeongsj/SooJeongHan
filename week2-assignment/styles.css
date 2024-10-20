@@ -94,3 +94,56 @@ li:last-child {
   background-color: #799fc4;
   color: white;
 }
+/*table section*/
+.table {
+  width: 104rem;
+  margin: auto;
+}
+
+/*table-button*/
+.button-table {
+  display: flex; /* 플렉스박스 레이아웃 활성화 */
+  justify-content: flex-end; 
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.button-table button {
+  color: white;
+  padding: 1rem; /* 버튼 내부 여백 */
+  border-style: none;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  width: 15rem;
+}
+.button-table button:first-child{
+  background-color: #4a6171;
+  color: white;
+}
+.button-table button:last-child{
+  background-color: #799fc4;
+  color: white;
+}
+
+/*membertable*/
+table {
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  width: 100%;
+  font-size: 1.2rem;
+}
+th, td {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+thead {
+  background-color: #ced4da;
+  font-weight: bold;
+}
+tbody tr{
+  background-color: #f2f2f2;
+}
+a {
+  color: black;
+}
