@@ -64,11 +64,12 @@
       </div>
     
       <div class="button-group">
-        <button type="reset">초기화</button>
-        <button type="submit">검색</button>
+        <button type="reset" id="reset-button">초기화</button>
+        <button type="submit" id="search-button">검색</button>
       </div>
     </section>
-    
+
+
     <section class="table">
       <div class="button-table">
         <button id="delete-selected">선택 삭제</button>
@@ -89,15 +90,15 @@
           </tr>
         </thead>
         <tbody id="members-tbody">
-          <!-- JavaScript로 동적으로 데이터가 들어갈 곳 -->
+
         </tbody>
       </table>
     </section>
   </main>
-  
+
   <div class="modal" id="modal">
     <div class="modal-content">
-      <span class="close" aria-label="모달 닫기">&times;</span>
+      <span class="close" aria-label="닫기">&times;</span>
       <h2>새 멤버 추가</h2>
       <form id="add-member-form">
         <label for="modal-name">이름</label>
@@ -111,14 +112,14 @@
 
         <label for="modal-gender">성별</label>
         <select id="modal-gender" name="gender" required>
-          <option value="" selected hidden>성별 선택</option>
+          <option value="" hidden selected>성별 선택</option>
           <option value="male">남자</option>
           <option value="female">여자</option>
         </select>
 
         <label for="modal-role">역할</label>
         <select id="modal-role" name="role" required>
-          <option value="" selected hidden>OB/YB 선택</option>
+          <option value="" hidden selected>OB/YB 선택</option>
           <option value="OB">OB</option>
           <option value="YB">YB</option>
         </select>
