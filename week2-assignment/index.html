@@ -36,7 +36,7 @@
         <div class="filter-item">
           <label for="gender">성별</label>
           <select id="gender">
-            <option value="" disabled hidden selected>성별 선택</option>
+            <option value="" hidden selected>성별 선택</option>
             <option value="male">남성</option>
             <option value="female">여성</option>
           </select>
@@ -45,7 +45,7 @@
         <div class="filter-item">
           <label for="role">역할</label>
           <select id="role">
-            <option value="" disabled hidden selected>OB/YB 선택</option>
+            <option value="" hidden selected>OB/YB 선택</option>
             <option value="OB">OB</option>
             <option value="YB">YB</option>
           </select>
@@ -93,6 +93,45 @@
       </table>
     </section>
   </main>
+  
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" aria-label="모달 닫기">&times;</span>
+      <h2>새 멤버 추가</h2>
+      <form id="add-member-form">
+        <label for="modal-name">이름</label>
+        <input type="text" id="modal-name" name="name" placeholder="이름을 입력하세요" required>
+
+        <label for="modal-eng-name">영문 이름</label>
+        <input type="text" id="modal-eng-name" name="engName" placeholder="영문 이름을 입력하세요" required>
+
+        <label for="modal-github">GitHub ID</label>
+        <input type="text" id="modal-github" name="github" placeholder="GitHub ID를 입력하세요" required>
+
+        <label for="modal-gender">성별</label>
+        <select id="modal-gender" name="gender" required>
+          <option value="" selected hidden>성별 선택</option>
+          <option value="male">남자</option>
+          <option value="female">여자</option>
+        </select>
+
+        <label for="modal-role">역할</label>
+        <select id="modal-role" name="role" required>
+          <option value="" selected hidden>OB/YB 선택</option>
+          <option value="OB">OB</option>
+          <option value="YB">YB</option>
+        </select>
+
+        <label for="modal-week1">1주차 금잔디조</label>
+        <input type="text" id="modal-week1" name="week1" placeholder="1주차 금잔디조를 입력하세요 (1~9)" required>
+
+        <label for="modal-week2">2주차 금잔디조</label>
+        <input type="text" id="modal-week2" name="week2" placeholder="2주차 금잔디조를 입력하세요 (1~9)" required>
+
+        <button type="button" id="add-member-button">추가</button>
+      </form>
+    </div>
+  </div>
   <script type="module" src="script.js"></script>
 
 </body>
