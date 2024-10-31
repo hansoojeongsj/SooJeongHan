@@ -11,7 +11,6 @@ header ul {
 }
 li {
   flex: 1;
-  text-align: center;
   padding: 2rem;
   font-weight: bold;
   font-size: 1.5rem;
@@ -21,6 +20,7 @@ li:first-child {
 }
 li:nth-child(2) {
   font-size: 2rem;
+  text-align: center;
 }
 li:last-child {
   text-align: right;
@@ -62,7 +62,7 @@ li:last-child {
   width: 12rem;
   text-align: center;
   font-size: 1.3rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 .filter-item input, 
 .filter-item select {
@@ -86,7 +86,7 @@ input:focus, select:focus {
   border-style: none;
   border-radius: 0.5rem;
   font-size: 1.3rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 .button-group button:first-child{
   background-color: #4a6171;
@@ -113,7 +113,7 @@ input:focus, select:focus {
   border-style: none;
   border-radius: 0.5rem;
   font-size: 1.1rem;
-  font-weight: bold;
+  font-weight: 700;
   width: 15rem;
 }
 .button-table button:first-child{
@@ -138,7 +138,7 @@ th, td {
 }
 thead {
   background-color: #ced4da;
-  font-weight: bold;
+  font-weight: 700;
 }
 tbody tr{
   background-color: #f2f2f2;
@@ -169,7 +169,7 @@ a {
 .modal-content h2 {
   margin-bottom: 2rem;
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 .close {
   position: absolute;
@@ -188,7 +188,7 @@ a {
   flex-direction: column;
   gap: 1rem;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 #add-member-form input,
 #add-member-form select {
