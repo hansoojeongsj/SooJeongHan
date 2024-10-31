@@ -161,11 +161,19 @@ document.getElementById('add-member-button').addEventListener('click', function(
   const github = document.getElementById('modal-github').value.trim();
   const gender = document.getElementById('modal-gender').value;
   const role = document.getElementById('modal-role').value;
-  const firstWeekGroup = parseInt(document.getElementById('modal-week1').value);
-  const secondWeekGroup = parseInt(document.getElementById('modal-week2').value);
+  const firstWeekGroup = document.getElementById('modal-week1').value; // 1주차 그룹
+  const secondWeekGroup = document.getElementById('modal-week2').value; // 2주차 그룹
 
+  // 모든 필드가 입력되었는지 확인
   if (!name || !englishName || !github || !gender || !role || !firstWeekGroup || !secondWeekGroup) {
     alert('모든 필드를 입력해 주세요.');
+    return;
+  }
+
+  // 첫째 주와 둘째 주 그룹이 1에서 9 사이인지 확인
+  if (!/^[1-9]$/.test(firstWeekGroup) || !/^[1-9]$/.test(secondWeekGroup)) {
+    alert('1주차 및 2주차 그룹은 1에서 9 사이의 숫자만 입력할 수 있습니다.');
+    document.getElementById('modal-week1').focus(); // 잘못된 입력 필드에 포커스를 이동
     return;
   }
 
@@ -176,16 +184,18 @@ document.getElementById('add-member-button').addEventListener('click', function(
     github: github,
     gender: gender,
     role: role,
-    firstWeekGroup: firstWeekGroup,
-    secondWeekGroup: secondWeekGroup
+    firstWeekGroup: parseInt(firstWeekGroup),
+    secondWeekGroup: parseInt(secondWeekGroup)
   };
 
   const membersData = getMembersFromLocalStorage();
   membersData.push(newMember);
   setMembersToLocalStorage(membersData);
   populateMembersTable(membersData);
-  closeModal();
 
+  // 모든 필드가 유효한 경우에만 모달을 닫습니다.
+  closeModal(); 
+  
   document.getElementById('add-member-form').reset();
 });
 
