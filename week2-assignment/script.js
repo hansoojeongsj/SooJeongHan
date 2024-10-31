@@ -35,6 +35,33 @@ function populateMembersTable(membersData) {
   });
   selectAllCheckbox.checked = false;
 }
+function filterByName(member, name) {
+  return name === '' || member.name.includes(name);
+}
+
+function filterByEnglishName(member, englishName) {
+  return englishName === '' || member.englishName.toLowerCase().includes(englishName);
+}
+
+function filterByGithub(member, github) {
+  return github === '' || member.github.toLowerCase().includes(github);
+}
+
+function filterByGender(member, gender) {
+  return gender === '' || member.gender === gender;
+}
+
+function filterByRole(member, role) {
+  return role === '' || member.role === role;
+}
+
+function filterByFirstWeekGroup(member, firstWeekGroup) {
+  return firstWeekGroup === '' || member.firstWeekGroup == firstWeekGroup;
+}
+
+function filterBySecondWeekGroup(member, secondWeekGroup) {
+  return secondWeekGroup === '' || member.secondWeekGroup == secondWeekGroup;
+}
 
 function filterMembers() {
   const name = document.getElementById('name').value;
@@ -49,13 +76,13 @@ function filterMembers() {
 
   const filteredMembers = membersData.filter(member => {
     return (
-      (name === '' || member.name.includes(name)) &&
-      (englishName === '' || member.englishName.toLowerCase().includes(englishName)) &&
-      (github === '' || member.github.toLowerCase().includes(github)) &&
-      (gender === '' || member.gender === gender) &&
-      (role === '' || member.role === role) &&
-      (firstWeekGroup === '' || member.firstWeekGroup == firstWeekGroup) &&
-      (secondWeekGroup === '' || member.secondWeekGroup == secondWeekGroup)
+      filterByName(member, name) &&
+      filterByEnglishName(member, englishName) &&
+      filterByGithub(member, github) &&
+      filterByGender(member, gender) &&
+      filterByRole(member, role) &&
+      filterByFirstWeekGroup(member, firstWeekGroup) &&
+      filterBySecondWeekGroup(member, secondWeekGroup)
     );
   });
 
