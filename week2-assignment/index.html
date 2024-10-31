@@ -54,18 +54,18 @@
     
         <div class="filter-item">
           <label for="week1">1주차 금잔디조</label>
-          <input type="text" id="week1" placeholder="1주차 금잔디조를 입력하세요 (1~9)">
+          <input type="number" id="week1" placeholder="1주차 금잔디조를 입력하세요 (1~9)" min="1" max="9">
         </div>
 
         <div class="filter-item">
           <label for="week2">2주차 금잔디조</label>
-          <input type="text" id="week2" placeholder="2주차 금잔디조를 입력하세요 (1~9)">
+          <input type="number" id="week2" placeholder="2주차 금잔디조를 입력하세요 (1~9)" min="1" max="9">
         </div>
       </div>
     
       <div class="button-group">
         <button type="reset" id="reset-button">초기화</button>
-        <button type="submit" id="search-button">검색</button>
+        <button type="button" id="search-button">검색</button>
       </div>
     </section>
 
@@ -125,12 +125,12 @@
         </select>
 
         <label for="modal-week1">1주차 금잔디조</label>
-        <input type="text" id="modal-week1" name="week1" placeholder="1주차 금잔디조를 입력하세요 (1~9)" required>
+        <input type="number" id="modal-week1" name="week1"  min="1" max="9" placeholder="1주차 금잔디조를 입력하세요 (1~9)" required>
 
         <label for="modal-week2">2주차 금잔디조</label>
-        <input type="text" id="modal-week2" name="week2" placeholder="2주차 금잔디조를 입력하세요 (1~9)" required>
+        <input type="number" id="modal-week2" name="week2"  min="1" max="9" placeholder="2주차 금잔디조를 입력하세요 (1~9)" required>
 
-        <button type="button" id="add-member-button">추가</button>
+        <button type="submit" id="add-member-button">추가</button>
       </form>
     </div>
   </div>
