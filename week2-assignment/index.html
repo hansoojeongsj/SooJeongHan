@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="png" href="assets/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://kit.fontawesome.com/9c71be1e79.js" crossorigin="anonymous"></script>
+  <title>회원 관리 페이지</title>
+</head>
+<body>
+  <header>
+    <ul>
+      <li><i class="fa-solid fa-cat"></i></li>
+      <li><h1>회원 관리 페이지</h1></li>
+      <li><p>🌊AND SOPT 물결 웹 파이팅🌊</p></li>
+    </ul>
+  </header>
+  <main>
+    <section class="filters">
+      <div class="filter-group">
+        <div class="filter-item">
+          <label for="name">이름</label>
+          <input type="text" id="name" placeholder="이름을 입력하세요">
+        </div>
+        
+        <div class="filter-item">
+          <label for="eng-name">영문 이름</label>
+          <input type="text" id="eng-name" placeholder="영문 이름을 입력하세요">
+        </div>
+    
+        <div class="filter-item">
+          <label for="github">GitHub</label>
+          <input type="text" id="github" placeholder="GitHub ID를 입력하세요">
+        </div>
+
+        <div class="filter-item">
+          <label for="gender">성별</label>
+          <select id="gender">
+            <option value="" hidden selected>성별 선택</option>
+            <option value="male">남성</option>
+            <option value="female">여성</option>
+          </select>
+        </div>
+
+        <div class="filter-item">
+          <label for="role">역할</label>
+          <select id="role">
+            <option value="" hidden selected>OB/YB 선택</option>
+            <option value="OB">OB</option>
+            <option value="YB">YB</option>
+          </select>
+        </div>
+    
+        <div class="filter-item">
+          <label for="week1">1주차 금잔디조</label>
+          <input type="number" id="week1" placeholder="1주차 금잔디조를 입력하세요 (1~9)" min="1" max="9">
+        </div>
+
+        <div class="filter-item">
+          <label for="week2">2주차 금잔디조</label>
+          <input type="number" id="week2" placeholder="2주차 금잔디조를 입력하세요 (1~9)" min="1" max="9">
+        </div>
+      </div>
+    
+      <div class="button-group">
+        <button type="reset" id="reset-button">초기화</button>
+        <button type="button" id="search-button">검색</button>
+      </div>
+    </section>
+
+
+    <section class="table">
+      <div class="button-table">
+        <button id="delete-selected">선택 삭제</button>
+        <button id="add-member">추가</button>
+      </div>
+    
+      <table id="members-table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" id="select-all"></th>
+            <th>이름</th>
+            <th>영문 이름</th>
+            <th>GitHub</th>
+            <th>성별</th>
+            <th>역할</th>
+            <th>1주차 금잔디</th>
+            <th>2주차 금잔디</th>
+          </tr>
+        </thead>
+        <tbody id="members-tbody">
+
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" aria-label="닫기">&times;</span>
+      <h2>새 멤버 추가</h2>
+      <form id="add-member-form">
+        <label for="modal-name">이름</label>
+        <input type="text" id="modal-name" name="name" placeholder="이름을 입력하세요" required>
+
+        <label for="modal-eng-name">영문 이름</label>
+        <input type="text" id="modal-eng-name" name="engName" placeholder="영문 이름을 입력하세요" required>
+
+        <label for="modal-github">GitHub ID</label>
+        <input type="text" id="modal-github" name="github" placeholder="GitHub ID를 입력하세요" required>
+
+        <label for="modal-gender">성별</label>
+        <select id="modal-gender" name="gender" required>
+          <option value="" hidden selected>성별 선택</option>
+          <option value="male">남자</option>
+          <option value="female">여자</option>
+        </select>
+
+        <label for="modal-role">역할</label>
+        <select id="modal-role" name="role" required>
+          <option value="" hidden selected>OB/YB 선택</option>
+          <option value="OB">OB</option>
+          <option value="YB">YB</option>
+        </select>
+
+        <label for="modal-week1">1주차 금잔디조</label>
+        <input type="number" id="modal-week1" name="week1"  min="1" max="9" placeholder="1주차 금잔디조를 입력하세요 (1~9)" required>
+
+        <label for="modal-week2">2주차 금잔디조</label>
+        <input type="number" id="modal-week2" name="week2"  min="1" max="9" placeholder="2주차 금잔디조를 입력하세요 (1~9)" required>
+
+        <button type="submit" id="add-member-button">추가</button>
+      </form>
+    </div>
+  </div>
+  <script type="module" src="script.js"></script>
+
+</body>
+</html>

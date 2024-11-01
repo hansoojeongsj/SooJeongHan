@@ -1,0 +1,207 @@
+@import "reset.css";
+
+body {
+  background-color:#d4dae6;
+}
+
+header ul {
+  display: flex;
+  background-color: #9dbbd5;
+  width: 100%;  
+}
+li {
+  flex: 1;
+  padding: 2rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+li:first-child {
+  text-align: left;
+}
+li:nth-child(2) {
+  font-size: 2rem;
+  text-align: center;
+}
+li:last-child {
+  text-align: right;
+}
+
+.filters {
+  background-color: #9dbbd5; 
+  max-width: 100rem; 
+  width: 100%;
+  margin: 2rem auto; 
+  padding: 2rem; 
+  border-radius: 1rem;
+}
+.filter-group {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+.filter-item {
+  display: flex;
+}
+.filter-item:nth-child(1), 
+.filter-item:nth-child(2) {
+  grid-column: 1 / span 6;
+}
+.filter-item:nth-child(3),
+.filter-item:nth-child(4),
+.filter-item:nth-child(5) {
+  grid-column: span 2;
+}
+.filter-item:nth-child(6),
+.filter-item:nth-child(7){
+  grid-column: span 3;
+}
+.filter-item label {
+  background-color: #e9ecef;
+  padding: 1.5rem 1rem;
+  border: none;
+  width: 12rem;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.filter-item input, 
+.filter-item select {
+  background-color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  flex-grow: 1;
+}
+input:focus, select:focus {
+  outline: none; 
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.button-group button {
+  flex: 1;
+  padding: 1rem;
+  border-style: none;
+  border-radius: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.button-group button:first-child{
+  background-color: #4a6171;
+  color: white;
+}
+.button-group button:last-child{
+  background-color: #799fc4;
+  color: white;
+}
+
+.table {
+  max-width: 104rem; 
+  width: 100%;  
+  margin: auto;
+}
+.button-table {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem; 
+}
+.button-table button {
+  color: white;
+  padding: 1rem; 
+  border-style: none;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  width: 15rem;
+}
+.button-table button:first-child{
+  background-color: #4a6171;
+  color: white;
+}
+.button-table button:last-child{
+  background-color: #799fc4;
+  color: white;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+  width: 100%;
+  font-size: 1.2rem;
+}
+th, td {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+thead {
+  background-color: #ced4da;
+  font-weight: 700;
+}
+tbody tr{
+  background-color: #f2f2f2;
+}
+a {
+  color: black;
+}
+
+.modal {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  background-color: #f2f2f2;
+  padding: 2rem;
+  width: 45rem;
+  border-radius: 1rem;
+  position: relative;
+}
+.modal-content h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  color: #aaa;
+  font-size: 3rem;
+  cursor: pointer;
+}
+.close:hover{
+  color:#000
+}
+
+#add-member-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+#add-member-form input,
+#add-member-form select {
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+#add-member-form button {
+  background-color: #4a6171;
+  color: white;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
