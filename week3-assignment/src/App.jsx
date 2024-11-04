@@ -8,25 +8,40 @@ import Level1 from './components/game/Level1';
 import Ranking from './components/ranking/Ranking';
 
 function App() {
-  const [selectedPage, setSelectedPage] = useState('game'); 
+  const [selectedPage, setSelectedPage] = useState('game'); // Track game or ranking
+  const [selectedLevel, setSelectedLevel] = useState('level1'); // Track selected level
+  const [timer, setTimer] = useState(0); 
 
   const renderPage = () => {
     switch (selectedPage) {
       case 'game':
-        return <Level1 />;
+        switch (selectedLevel) {
+          case 'level1':
+            return <Level1 setTimer={setTimer} />;
+
+          default:
+            return <Level1 setTimer={setTimer} />;
+        }
       case 'ranking':
         return <Ranking />;
       default:
-        return <Level1 />;
+        return <Level1 setTimer={setTimer} />;
     }
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Header onSelect={setSelectedPage} selectedPage={selectedPage} />
-      {renderPage()}
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Header 
+          onSelect={setSelectedPage} 
+          selectedPage={selectedPage} 
+          timeElapsed={timer} 
+          setSelectedLevel={setSelectedLevel}
+        />
+        {renderPage()}
+      </ThemeProvider>
+    </>
   );
 }
 

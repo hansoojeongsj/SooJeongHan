@@ -1,13 +1,16 @@
 import React from 'react';
 import * as H from './HeaderStyle';
 
-const Header = ({ onSelect, selectedPage }) => {
+const Header = ({ onSelect, selectedPage, timeElapsed, setSelectedLevel }) => {
     return (
         <H.HeaderContainer>
             <H.LeftSection>
                 <h1>1 to 50</h1>
                 <H.Button 
-                    onClick={() => onSelect('game')} 
+                    onClick={() => {
+                        onSelect('game'); 
+                        setSelectedLevel('level1'); 
+                    }} 
                     $isActive={selectedPage === 'game'}
                 >
                     게임
@@ -19,14 +22,16 @@ const Header = ({ onSelect, selectedPage }) => {
                     랭킹
                 </H.Button>
             </H.LeftSection>
-            <H.RightSection>
-              <H.LevelSelect>
-                  <option value="level1">Level 1</option>
-                  <option value="level2">Level 2</option>
-                  <option value="level3">Level 3</option>
-              </H.LevelSelect>
-              <H.Timer>0.00</H.Timer>                
-            </H.RightSection>
+            {selectedPage === 'game' && (
+                <H.RightSection>
+                    <H.LevelSelect onChange={(e) => setSelectedLevel(e.target.value)}>
+                        <option value="level1">Level 1</option>
+                        <option value="level2">Level 2</option>
+                        <option value="level3">Level 3</option>
+                    </H.LevelSelect>
+                    <H.Timer>{timeElapsed}</H.Timer>                
+                </H.RightSection>
+            )}
         </H.HeaderContainer>
     );
 };

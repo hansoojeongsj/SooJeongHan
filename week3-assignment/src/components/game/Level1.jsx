@@ -1,67 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import styled, { keyframes, css } from 'styled-components';
+import * as G from './Level1Style';
 
-const blink = keyframes`
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
-`;
-
-const GameContainer = styled.div`
-  text-align: center;
-`;
-
-const TitleNumber = styled.p`
-  font-size: 2rem;
-  margin: 3rem;
-`;
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 100px);
-  grid-gap: 10px;
-  margin: 20px auto;
-  justify-content: center;
-`;
-
-const Cell = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  font-size: 24px;
-  cursor: pointer;
-  background-color: ${({ number, theme }) => 
-    number === null ? 'transparent' : (number > 9 ? theme.colors.blue : theme.colors.pastelblue)};
-  color: ${({ number }) => (number > 9 ? 'white' : 'black')};
-  border-radius: 8px;
-  transition: background-color 0.3s;
-
-  ${({ isClicked }) =>
-    isClicked &&
-    css`
-      animation: ${blink} 0.5s ease forwards;
-    `}
-`;
-
-const Level1 = ({ timer, handleStartGame, handleEndGame, resetTimer }) => {
+const Level1 = ({ setTimer }) => {
   const [grid, setGrid] = useState([]);
   const [nextNumber, setNextNumber] = useState(1);
   const [startTime, setStartTime] = useState(null);
   const [numbersToGenerate, setNumbersToGenerate] = useState([]);
+  const [clickedCells, setClickedCells] = useState(new Array(9).fill(false));
 
   useEffect(() => {
-    resetGame(); // Reset the game when the component mounts
+    resetGame();
   }, []);
+
+  useEffect(() => {
+    let timerInterval;
+    if (startTime) {
+      timerInterval = setInterval(() => {
+        setTimer(((Date.now() - startTime) / 1000).toFixed(2)); // 타이머 업데이트
+      }, 10);
+    }
+    return () => clearInterval(timerInterval); // 컴포넌트 언마운트 시 타이머 정리
+  }, [startTime, setTimer]);
 
   const resetGame = () => {
     setStartTime(null);
     setNextNumber(1);
+    setClickedCells(new Array(9).fill(false));
     const initialNumbers = Array.from({ length: 9 }, (_, i) => i + 1);
     shuffleArray(initialNumbers);
     
-    setGrid(initialNumbers);
-    setNumbersToGenerate(Array.from({ length: 9 }, (_, i) => i + 10)); // Numbers 10 to 18
+    setGrid(initialNumbers); // 초기 숫자 세팅
+    setNumbersToGenerate(Array.from({ length: 9 }, (_, i) => i + 10)); // 10부터 18까지의 숫자 배열
+    setTimer(0); // 타이머 초기화
   };
 
   const shuffleArray = (array) => {
@@ -70,54 +40,54 @@ const Level1 = ({ timer, handleStartGame, handleEndGame, resetTimer }) => {
       [array[i], array[j]] = [array[j], array[i]];
     }
   };
+
   const handleClick = (number, index) => {
     if (number !== nextNumber) {
-      return; // Only allow clicking the correct next number
+      return; // 올바른 숫자가 아니면 리턴
     }
-  
-    // If the game starts with the first number clicked
+
+    const updatedClickedCells = [...clickedCells];
+    updatedClickedCells[index] = true; // 클릭된 셀 기록
+    setClickedCells(updatedClickedCells);
+
     if (nextNumber === 1 && !startTime) {
       setStartTime(Date.now());
     }
-  
+
     const newGrid = [...grid];
-    newGrid[index] = null; // Set the clicked cell to null to remove the number
-  
-    // Generate and place a new number if the next number is less than 10
-    if (nextNumber < 10 && numbersToGenerate.length > 0) {
+    newGrid[index] = null; // 클릭한 숫자를 null로 설정
+    setGrid(newGrid);
+
+    // 새로운 숫자 추가
+    if (nextNumber < 26 && numbersToGenerate.length > 0) {
       const randomIndex = Math.floor(Math.random() * numbersToGenerate.length);
       const newNumber = numbersToGenerate[randomIndex];
-      numbersToGenerate.splice(randomIndex, 1); // Remove the used number
-  
-      // Place the new number in the first null position
-      const nullIndex = newGrid.indexOf(null);
-      newGrid[nullIndex] = newNumber; // Place the new number
+      numbersToGenerate.splice(randomIndex, 1); // 사용한 숫자 제거
+      newGrid[newGrid.indexOf(null)] = newNumber; // null 위치에 새로운 숫자 추가
       setGrid(newGrid);
     }
-  
-    // Check if the game has ended
+
+    // 게임 종료 조건
     if (nextNumber === 18) {
-      alert('축하합니다! 게임이 끝났습니다!'); // Show alert when the last number is clicked
-      handleEndGame(); // Trigger the end game handler
+      alert(`게임 끝! 걸린 시간:${((Date.now() - startTime) / 1000).toFixed(2)}초`);
+      resetGame();
       return;
     }
-  
-    // Update the next number to click
-    setNextNumber((prev) => prev + 1);
+    
+    setNextNumber((prev) => prev + 1); // 다음 숫자로 증가
   };
-  
 
   return (
-    <GameContainer>
-      <TitleNumber>다음 숫자: {nextNumber}</TitleNumber>
-      <Grid>
+    <G.GameContainer>
+      <G.TitleNumber>다음 숫자: {nextNumber}</G.TitleNumber>
+      <G.Grid>
         {grid.map((number, index) => (
-          <Cell key={index} number={number} onClick={() => handleClick(number, index)}>
+          <G.Cell key={index} number={number} onClick={() => handleClick(number, index)} isClicked={clickedCells[index]}>
             {number}
-          </Cell>
+          </G.Cell>
         ))}
-      </Grid>
-    </GameContainer>
+      </G.Grid>
+    </G.GameContainer>
   );
 };
 
