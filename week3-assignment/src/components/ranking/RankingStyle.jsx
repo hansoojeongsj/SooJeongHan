@@ -45,18 +45,19 @@ export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
   font-size: 1.5rem;
-  
+  border: 1px solid ${({ theme }) => theme.colors.gray};
 `;
 
 export const Th = styled.th`
-  padding: 10px;
+  padding: 1.2rem;
   text-align: left;
   background-color: ${({ theme }) => theme.colors.blue};
+  border: 1px solid ${({ theme }) => theme.colors.gray}; 
 `;
 
 export const Td = styled.td`
-  padding: 10px;
-  border-bottom: 0.2rem solid ${({ theme }) => theme.colors.white};;
+  padding: 1.2rem;
+  border: 1px solid ${({ theme }) => theme.colors.gray}; 
 `;
 
 export const TableRow = styled.tr`
