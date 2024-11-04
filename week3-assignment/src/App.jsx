@@ -5,6 +5,8 @@ import { GlobalStyle } from './style/GlobalStyle';
 import './App.css';
 import Header from './components/header/Header';
 import Level1 from './components/game/Level1';
+import Level2 from './components/game/Level2';
+import Level3 from './components/game/Level3';
 import Ranking from './components/ranking/Ranking';
 
 function App() {
@@ -18,7 +20,10 @@ function App() {
         switch (selectedLevel) {
           case 'level1':
             return <Level1 setTimer={setTimer} />;
-
+          case 'level2':
+            return <Level2 setTimer={setTimer} />;
+          case 'level3':
+            return <Level3 setTimer={setTimer} />;
           default:
             return <Level1 setTimer={setTimer} />;
         }
