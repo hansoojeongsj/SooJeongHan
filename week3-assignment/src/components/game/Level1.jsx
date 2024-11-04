@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import * as G from './Level1Style';
+import Modal from '../modal/Modal';
 
-const Level1 = ({ setTimer }) => {
+const Game = ({ setTimer }) => {
   const [grid, setGrid] = useState([]);
   const [nextNumber, setNextNumber] = useState(1);
   const [startTime, setStartTime] = useState(null);
   const [numbersToGenerate, setNumbersToGenerate] = useState([]);
   const [clickedCells, setClickedCells] = useState(new Array(9).fill(false));
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [elapsedTime, setElapsedTime] = useState('0.00');
+  
   useEffect(() => {
     resetGame();
   }, []);
@@ -16,22 +19,39 @@ const Level1 = ({ setTimer }) => {
     let timerInterval;
     if (startTime) {
       timerInterval = setInterval(() => {
-        setTimer(((Date.now() - startTime) / 1000).toFixed(2)); // 타이머 업데이트
+        const timeElapsed = ((Date.now() - startTime) / 1000).toFixed(2);
+        setTimer(`${timeElapsed}`);
+        setElapsedTime(timeElapsed);
       }, 10);
     }
-    return () => clearInterval(timerInterval); // 컴포넌트 언마운트 시 타이머 정리
+    return () => clearInterval(timerInterval);
   }, [startTime, setTimer]);
 
-  const resetGame = () => {
+  const finishGame = () => {
     setStartTime(null);
+    
+    // 게임이 끝날 때 기록 저장
+    const newRecord = {
+      timestamp: new Date().toISOString(),
+      level: 'Level 1',
+      playTime: elapsedTime,
+    };
+
+    const currentRecords = JSON.parse(localStorage.getItem('rankings')) || [];
+    currentRecords.push(newRecord);
+    localStorage.setItem('rankings', JSON.stringify(currentRecords));
+  };
+
+  const resetGame = () => {
     setNextNumber(1);
     setClickedCells(new Array(9).fill(false));
     const initialNumbers = Array.from({ length: 9 }, (_, i) => i + 1);
     shuffleArray(initialNumbers);
     
-    setGrid(initialNumbers); // 초기 숫자 세팅
-    setNumbersToGenerate(Array.from({ length: 9 }, (_, i) => i + 10)); // 10부터 18까지의 숫자 배열
-    setTimer(0); // 타이머 초기화
+    setGrid(initialNumbers);
+    setNumbersToGenerate(Array.from({ length: 9 }, (_, i) => i + 10));
+    setTimer('0.00');
+    setElapsedTime('0.00');
   };
 
   const shuffleArray = (array) => {
@@ -43,38 +63,41 @@ const Level1 = ({ setTimer }) => {
 
   const handleClick = (number, index) => {
     if (number !== nextNumber) {
-      return; // 올바른 숫자가 아니면 리턴
+      return;
     }
-
+  
     const updatedClickedCells = [...clickedCells];
-    updatedClickedCells[index] = true; // 클릭된 셀 기록
+    updatedClickedCells[index] = true;
     setClickedCells(updatedClickedCells);
-
+  
     if (nextNumber === 1 && !startTime) {
       setStartTime(Date.now());
     }
-
+  
     const newGrid = [...grid];
-    newGrid[index] = null; // 클릭한 숫자를 null로 설정
+    newGrid[index] = null;
     setGrid(newGrid);
-
-    // 새로운 숫자 추가
-    if (nextNumber < 26 && numbersToGenerate.length > 0) {
+  
+    if (nextNumber < 10 && numbersToGenerate.length > 0) {
       const randomIndex = Math.floor(Math.random() * numbersToGenerate.length);
       const newNumber = numbersToGenerate[randomIndex];
-      numbersToGenerate.splice(randomIndex, 1); // 사용한 숫자 제거
-      newGrid[newGrid.indexOf(null)] = newNumber; // null 위치에 새로운 숫자 추가
+      numbersToGenerate.splice(randomIndex, 1);
+      newGrid[newGrid.indexOf(null)] = newNumber;
       setGrid(newGrid);
     }
-
-    // 게임 종료 조건
+  
     if (nextNumber === 18) {
-      alert(`게임 끝! 걸린 시간:${((Date.now() - startTime) / 1000).toFixed(2)}초`);
-      resetGame();
+      setIsModalOpen(true);
+      finishGame();
       return;
     }
     
-    setNextNumber((prev) => prev + 1); // 다음 숫자로 증가
+    setNextNumber((prev) => prev + 1);
+  };
+  
+  const closeModal = () => {
+    setIsModalOpen(false);
+    resetGame();
   };
 
   return (
@@ -82,13 +105,19 @@ const Level1 = ({ setTimer }) => {
       <G.TitleNumber>다음 숫자: {nextNumber}</G.TitleNumber>
       <G.Grid>
         {grid.map((number, index) => (
-          <G.Cell key={index} number={number} onClick={() => handleClick(number, index)} isClicked={clickedCells[index]}>
+          <G.Cell key={index} $number={number} onClick={() => handleClick(number, index)} $isClicked={clickedCells[index]}>
             {number}
           </G.Cell>
         ))}
       </G.Grid>
+      {isModalOpen && (
+        <Modal 
+          onClose={closeModal} 
+          message={`게임 끝! 기록: ${elapsedTime}초`}
+        />
+      )}
     </G.GameContainer>
   );
 };
 
-export default Level1;
+export default Game;

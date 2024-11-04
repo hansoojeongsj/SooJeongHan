@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaRedo } from 'react-icons/fa';
 import * as R from './RankingStyle';
 
 const Ranking = () => {
-  const rankings = [
-    { timestamp: '2024-10-31 12:00', level: 'Level 1', playTime: '10:30' },
-    { timestamp: '2024-10-31 13:00', level: 'Level 2', playTime: '8:45' },
-    { timestamp: '2024-10-31 14:00', level: 'Level 3', playTime: '15:20' },
-    { timestamp: '2024-10-31 15:00', level: 'Level 3', playTime: '15:20' },
-  ];
+  const [rankings, setRankings] = useState([]);
+
+  useEffect(() => {
+    const storedRankings = JSON.parse(localStorage.getItem('rankings')) || [];
+    const sortedRankings = storedRankings.sort((a, b) => {
+      if (a.level !== b.level) {
+        return b.level.localeCompare(a.level);
+      }
+      return a.playTime - b.playTime; 
+    });
+    setRankings(sortedRankings);
+  }, []);
 
   const handleReset = () => {
+    localStorage.removeItem('rankings');
+    setRankings([]);
     alert('랭킹 초기화');
   };
 
@@ -33,9 +41,9 @@ const Ranking = () => {
         <tbody>
           {rankings.map((ranking, index) => (
             <R.TableRow key={index}>
-              <R.Td>{ranking.timestamp}</R.Td>
+              <R.Td>{new Date(ranking.timestamp).toLocaleString()}</R.Td>
               <R.Td>{ranking.level}</R.Td>
-              <R.Td>{ranking.playTime}</R.Td>
+              <R.Td>{ranking.playTime}초</R.Td>
             </R.TableRow>
           ))}
         </tbody>
