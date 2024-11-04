@@ -30,7 +30,6 @@ const Game = ({ setTimer }) => {
   const finishGame = () => {
     setStartTime(null);
     
-    // 게임이 끝날 때 기록 저장
     const newRecord = {
       timestamp: new Date().toISOString(),
       level: 'Level 2',

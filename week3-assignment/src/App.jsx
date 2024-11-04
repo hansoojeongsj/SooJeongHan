@@ -10,8 +10,8 @@ import Level3 from './components/game/Level3';
 import Ranking from './components/ranking/Ranking';
 
 function App() {
-  const [selectedPage, setSelectedPage] = useState('game'); // Track game or ranking
-  const [selectedLevel, setSelectedLevel] = useState('level1'); // Track selected level
+  const [selectedPage, setSelectedPage] = useState('game');
+  const [selectedLevel, setSelectedLevel] = useState('level1');
   const [timer, setTimer] = useState(0); 
 
   const renderPage = () => {
