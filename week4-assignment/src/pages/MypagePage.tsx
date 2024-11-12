@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import MypageHeader from '../components/Mypage/MypageHeader';
+import MypageHobby from '../components/Mypage/MypageHobby';
+import MypageInfo from '../components/Mypage/MypageInfo';
 
 const MypagePage = () => {
   const [selectedComponent, setSelectedComponent] = useState<string>('취미');
@@ -12,8 +14,8 @@ const MypagePage = () => {
     <div>
       <MypageHeader onComponentSelect={handleComponentSelect} />
       <div>
-        {selectedComponent === '취미' && <div>취미페이지</div>}
-        {selectedComponent === '내 정보' && <div>내정보페이지</div>}
+        {selectedComponent === '취미' && <MypageHobby/>}
+        {selectedComponent === '내 정보' && <MypageInfo/>}
       </div>
     </div>
   );
