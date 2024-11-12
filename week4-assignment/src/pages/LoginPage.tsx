@@ -1,8 +1,16 @@
+import Login from '../components/Login/Login';
+import { useNavigate } from 'react-router-dom';
+
 const LoginPage = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = () =>{
+    navigate('/mypage');
+  }
 
   return (
     <div>
-      로그인 페이지
+      <Login onLogin={handleLogin} />
     </div>
   );
 };
