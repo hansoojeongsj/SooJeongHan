@@ -21,23 +21,13 @@ const SignupHobby = ({ onSetHobby, onSignupComplete }: SignupHobbyProps) => {
     setHobbyInput(value);
 
     if (value.length > 8) {
-      setError('취미는 8자 이하여야 합니다');
+      setError('취미는 8자 이하로 입력해 주세요');
     } else {
       setError('');
     }
   };
 
   const handleSignup = () => {
-    if (hobbyInput.trim() === '') {
-      setError('취미를 입력해주세요');
-      return;
-    }
-
-    if (hobbyInput.length > 8) {
-      setError('취미는 8자 이하여야 합니다');
-      return;
-    }
-
     onSignupComplete();
   };
 

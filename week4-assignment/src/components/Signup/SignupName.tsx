@@ -15,7 +15,7 @@ const SignupName = ({ onNext, onSetName }: SignupNameProps) => {
     setUsername(inputName); 
 
     if (inputName.length > 8) {
-      setError('이름은 8글자를 초과할 수 없습니다');
+      setError('이름은 8이하로 입력해 주세요');
     } else {
       setError('');
     }

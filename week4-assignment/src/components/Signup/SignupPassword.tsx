@@ -25,7 +25,7 @@ const SignupPassword = ({ onNext, onSetPassword }: SignupPasswordProps) => {
 
     if (name === 'password') {
       if (inputValue.length > 8) {
-        setError('비밀번호는 8자 이하여야 합니다');
+        setError('비밀번호는 8자 이하로 입력해 주세요');
       } else if (inputValue !== confirmPassword) {
         setError('비밀번호가 일치하지 않습니다');
       } else {
@@ -37,7 +37,7 @@ const SignupPassword = ({ onNext, onSetPassword }: SignupPasswordProps) => {
       if (inputValue !== password) {
         setError('비밀번호가 일치하지 않습니다');
       } else if (inputValue.length > 8) {
-        setError('비밀번호는 8자 이하여야 합니다');
+        setError('비밀번호는 8자 이하로 입력해 주세요');
       } else {
         setError('');
       }
@@ -46,16 +46,7 @@ const SignupPassword = ({ onNext, onSetPassword }: SignupPasswordProps) => {
   };
 
   const handleNextClick = () => {
-    if (password.length > 8) {
-      setError('비밀번호는 8자 이하여야 합니다');
-      return;
-    }
 
-    if (password !== confirmPassword) {
-      setError('비밀번호가 일치하지 않습니다');
-      return;
-    }
-    
     setError(''); 
     onSetPassword(password);  
     onNext();
