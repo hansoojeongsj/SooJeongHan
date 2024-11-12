@@ -9,6 +9,7 @@ const MypageHeader = ({ onComponentSelect }: MypageHeaderProps) => {
   const navigate = useNavigate(); 
 
   const handleLogout = (): void => {
+    localStorage.removeItem('token');
     navigate('/');
   };
 
