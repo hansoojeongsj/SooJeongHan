@@ -76,7 +76,7 @@ const MypageHobby = () => {
       );
 
       if (response.status === 200) {
-        setOtherHobby(response.data.result.hobby);
+        setOtherHobby(`${userNumber}번 사용자의 취미: ${response.data.result.hobby}`);
       }
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {

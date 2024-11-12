@@ -1,5 +1,3 @@
-import { css } from 'styled-components';
-
 const colors = {
     background: '#e8e7e6',
     lightgreen: '#cbd3bd',
