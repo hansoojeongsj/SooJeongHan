@@ -7,7 +7,6 @@ const Game = ({ levelData, onStart, onStop, onReset, elapsedTime }) => {
   const { START_NUM, END_NUM, GRID_SIZE } = levelData;
   const [grid, setGrid] = useState([]);
   const [nextNumber, setNextNumber] = useState(START_NUM);
-  const [numbersToGenerate, setNumbersToGenerate] = useState([]);
   const [clickedCells, setClickedCells] = useState(new Array(GRID_SIZE * GRID_SIZE).fill(false));
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -34,7 +33,6 @@ const Game = ({ levelData, onStart, onStop, onReset, elapsedTime }) => {
     const initialNumbers = Array.from({ length: GRID_SIZE * GRID_SIZE }, (_, i) => i + START_NUM);
     shuffleArray(initialNumbers);
     setGrid(initialNumbers);
-    setNumbersToGenerate(Array.from({ length: GRID_SIZE * GRID_SIZE }, (_, i) => i + END_NUM + 1));
     onReset();
   };
 
@@ -45,45 +43,50 @@ const Game = ({ levelData, onStart, onStop, onReset, elapsedTime }) => {
     }
   };
 
-  const handleClick = (number, index) => {
-    if (number !== nextNumber) {
-      return;
-    }
-  
+  const updateClickedCells = (index) => {
     const updatedClickedCells = [...clickedCells];
     updatedClickedCells[index] = true;
     setClickedCells(updatedClickedCells);
-  
+  };
+
+  const updateGridWithNewNumber = (number, index, usedNumbers) => {
+    const newGrid = [...grid];
+    const middleValue = Math.floor((END_NUM) / 2);
+
+    if (number < middleValue + 1) {
+      const availableNumbers = Array.from({ length: END_NUM - middleValue }, (_, i) => i + middleValue + 1);
+      const remainingAvailableNumbers = availableNumbers.filter(num => !usedNumbers.includes(num));
+      const randomNumber = remainingAvailableNumbers[Math.floor(Math.random() * remainingAvailableNumbers.length)];
+      newGrid[index] = randomNumber;
+    } else {
+      newGrid[index] = null;
+    }
+
+    return newGrid;
+  };
+
+  const handleCellClick = (number, index) => {
+    if (number !== nextNumber) {
+      return;
+    }
+
+    updateClickedCells(index);
+
     if (nextNumber === START_NUM) {
       onStart();
     }
-  
-    const newGrid = [...grid];
-    newGrid[index] = null;
-  
+
     const usedNumbers = [...grid.filter(num => num !== null)];
-  
-    const middleValue = Math.floor((END_NUM) / 2);
-  
-    if (number < middleValue+1) {
-      const availableNumbers = Array.from({ length: END_NUM - middleValue }, (_, i) => i + middleValue + 1);
-  
-      const remainingAvailableNumbers = availableNumbers.filter(num => !usedNumbers.includes(num));
-  
-      const randomNumber = remainingAvailableNumbers[Math.floor(Math.random() * remainingAvailableNumbers.length)];
-  
-      newGrid[index] = randomNumber;
-    }
-  
-    if (nextNumber === END_NUM) {
-      finishGame();
-      return;
-    }
-  
+    const newGrid = updateGridWithNewNumber(number, index, usedNumbers);
+
     setGrid(newGrid);
     setNextNumber((prev) => prev + 1);
+
+    if (nextNumber === END_NUM) {
+      finishGame();
+    }
   };
-  
+
   const closeModal = () => {
     setIsModalOpen(false);
     resetGame();
@@ -94,7 +97,7 @@ const Game = ({ levelData, onStart, onStop, onReset, elapsedTime }) => {
       <G.TitleNumber>다음 숫자: {nextNumber}</G.TitleNumber>
       <G.Grid gridSize={GRID_SIZE}>
         {grid.map((number, index) => (
-          <G.Cell gridSize={GRID_SIZE**2} key={index} $number={number} onClick={() => handleClick(number, index)} $isClicked={clickedCells[index]}>
+          <G.Cell key={index} gridSize={GRID_SIZE**2} $number={number} onClick={() => handleCellClick(number, index)} $isClicked={clickedCells[index]}>
             {number}
           </G.Cell>
         ))}
