@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import * as G from './Level1Style';
+import * as G from './Level1Style'; // 스타일링
 import Modal from '../modal/Modal';
 
-const Level1 = ({ onStart, onStop, onReset, elapsedTime }) => {
+const Level = ({ levelData, onStart, onStop, onReset, elapsedTime }) => {
+  const { START_NUM, END_NUM, GRID_SIZE } = levelData;
   const [grid, setGrid] = useState([]);
-  const [nextNumber, setNextNumber] = useState(1);
+  const [nextNumber, setNextNumber] = useState(START_NUM);
   const [numbersToGenerate, setNumbersToGenerate] = useState([]);
-  const [clickedCells, setClickedCells] = useState(new Array(9).fill(false));
+  const [clickedCells, setClickedCells] = useState(new Array(GRID_SIZE * GRID_SIZE).fill(false));
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     resetGame();
-  }, []);
+  }, [levelData]);
 
   const finishGame = () => {
     onStop();
-
     setIsModalOpen(true);
     const newRecord = {
       timestamp: new Date().toISOString(),
-      level: 'Level 1',
+      level: `Level ${levelData.LEVEL}`,
       playTime: elapsedTime,
     };
     const currentRecords = JSON.parse(localStorage.getItem('rankings')) || [];
@@ -28,13 +28,12 @@ const Level1 = ({ onStart, onStop, onReset, elapsedTime }) => {
   };
 
   const resetGame = () => {
-    setNextNumber(1);
-    setClickedCells(new Array(9).fill(false));
-    const initialNumbers = Array.from({ length: 9 }, (_, i) => i + 1);
+    setNextNumber(START_NUM);
+    setClickedCells(new Array(GRID_SIZE * GRID_SIZE).fill(false));
+    const initialNumbers = Array.from({ length: GRID_SIZE * GRID_SIZE }, (_, i) => i + START_NUM);
     shuffleArray(initialNumbers);
-
     setGrid(initialNumbers);
-    setNumbersToGenerate(Array.from({ length: 9 }, (_, i) => i + 10));
+    setNumbersToGenerate(Array.from({ length: GRID_SIZE * GRID_SIZE }, (_, i) => i + END_NUM + 1));
     onReset();
   };
 
@@ -49,34 +48,26 @@ const Level1 = ({ onStart, onStop, onReset, elapsedTime }) => {
     if (number !== nextNumber) {
       return;
     }
-  
+
     const updatedClickedCells = [...clickedCells];
     updatedClickedCells[index] = true;
     setClickedCells(updatedClickedCells);
-  
-    if (nextNumber === 1) {
+
+    if (nextNumber === START_NUM) {
       onStart();
     }
-  
+
     const newGrid = [...grid];
     newGrid[index] = null;
-  
-    if (nextNumber >= 1 && nextNumber < 10 && numbersToGenerate.length > 0) {
-      const randomNumber = numbersToGenerate[Math.floor(Math.random() * numbersToGenerate.length)];
-      newGrid[index] = randomNumber;
-      setNumbersToGenerate((prev) => prev.filter((num) => num !== randomNumber));
-    }
-  
-    setGrid(newGrid);
-  
-    if (nextNumber === 18) {
+
+    if (nextNumber === END_NUM) {
       finishGame();
       return;
     }
-  
+
+    setGrid(newGrid);
     setNextNumber((prev) => prev + 1);
   };
-  
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -103,4 +94,4 @@ const Level1 = ({ onStart, onStop, onReset, elapsedTime }) => {
   );
 };
 
-export default Level1;
+export default Level;
