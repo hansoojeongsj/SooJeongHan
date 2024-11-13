@@ -28,12 +28,15 @@ export const Cell = styled.div`
   justify-content: center;
   align-items: center;
   height: 10rem;
+  width: 100%;
   font-size: 2.5rem;
   cursor: pointer;
   background-color: ${({ $number, theme, gridSize }) =>
     $number === null ? 'transparent' : $number > `${gridSize}` ? theme.colors.blue : theme.colors.pastelblue};
   color: ${({ $number, theme, gridSize }) => ($number > `${gridSize}` ? theme.colors.white : theme.colors.black)};
   border-radius: 8px;
+  border: none;
+  box-shadow: none;
   transition: background-color 0.3s;
 
   ${({ $isClicked }) =>
@@ -42,4 +45,3 @@ export const Cell = styled.div`
       animation: ${blink} 0.5s ease forwards;
     `}
 `;
-
