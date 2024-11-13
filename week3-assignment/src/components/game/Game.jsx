@@ -49,27 +49,41 @@ const Game = ({ levelData, onStart, onStop, onReset, elapsedTime }) => {
     if (number !== nextNumber) {
       return;
     }
-
+  
     const updatedClickedCells = [...clickedCells];
     updatedClickedCells[index] = true;
     setClickedCells(updatedClickedCells);
-
+  
     if (nextNumber === START_NUM) {
       onStart();
     }
-
+  
     const newGrid = [...grid];
     newGrid[index] = null;
-
+  
+    const usedNumbers = [...grid.filter(num => num !== null)];
+  
+    const middleValue = Math.floor((END_NUM) / 2);
+  
+    if (number < middleValue+1) {
+      const availableNumbers = Array.from({ length: END_NUM - middleValue }, (_, i) => i + middleValue + 1);
+  
+      const remainingAvailableNumbers = availableNumbers.filter(num => !usedNumbers.includes(num));
+  
+      const randomNumber = remainingAvailableNumbers[Math.floor(Math.random() * remainingAvailableNumbers.length)];
+  
+      newGrid[index] = randomNumber;
+    }
+  
     if (nextNumber === END_NUM) {
       finishGame();
       return;
     }
-
+  
     setGrid(newGrid);
     setNextNumber((prev) => prev + 1);
   };
-
+  
   const closeModal = () => {
     setIsModalOpen(false);
     resetGame();
@@ -78,9 +92,9 @@ const Game = ({ levelData, onStart, onStop, onReset, elapsedTime }) => {
   return (
     <G.GameContainer>
       <G.TitleNumber>다음 숫자: {nextNumber}</G.TitleNumber>
-      <G.Grid>
+      <G.Grid gridSize={GRID_SIZE}>
         {grid.map((number, index) => (
-          <G.Cell key={index} $number={number} onClick={() => handleClick(number, index)} $isClicked={clickedCells[index]}>
+          <G.Cell gridSize={GRID_SIZE**2} key={index} $number={number} onClick={() => handleClick(number, index)} $isClicked={clickedCells[index]}>
             {number}
           </G.Cell>
         ))}
@@ -95,7 +109,6 @@ const Game = ({ levelData, onStart, onStop, onReset, elapsedTime }) => {
   );
 };
 
-// PropTypes는 Game 컴포넌트에 대해 설정
 Game.propTypes = {
   levelData: PropTypes.shape({
     LEVEL: PropTypes.number.isRequired, 

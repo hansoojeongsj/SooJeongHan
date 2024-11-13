@@ -6,11 +6,11 @@ import './App.css';
 import Header from './components/header/Header';
 import Game from './components/game/Game';
 import Ranking from './components/ranking/Ranking';
-import { GAME_LEVELS } from './constants/gameLevels';
+import { GAME_LEVELS } from './constant/contant';
 
 function App() {
   const [selectedPage, setSelectedPage] = useState('game');
-  const [selectedLevel, setSelectedLevel] = useState('level1');
+  const [selectedLevel, setSelectedLevel] = useState('LEVEL_1');
   const [timer, setTimer] = useState('0.00');
   const [startTime, setStartTime] = useState(null);
 
@@ -34,9 +34,10 @@ function App() {
   };
 
   const renderPage = () => {
+    const levelData = GAME_LEVELS[selectedLevel.toUpperCase()] || GAME_LEVELS.LEVEL_1;
+
     switch (selectedPage) {
       case 'game':
-        const levelData = GAME_LEVELS[selectedLevel.toUpperCase()];
         return (
           <Game
             levelData={levelData}

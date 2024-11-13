@@ -9,7 +9,7 @@ const Header = ({ onSelect, selectedPage, timeElapsed, setSelectedLevel }) => {
                 <H.Button 
                     onClick={() => {
                         onSelect('game'); 
-                        setSelectedLevel('level1'); 
+                        setSelectedLevel('LEVEL_1'); 
                     }} 
                     $isActive={selectedPage === 'game'}
                 >
@@ -25,9 +25,9 @@ const Header = ({ onSelect, selectedPage, timeElapsed, setSelectedLevel }) => {
             {selectedPage === 'game' && (
                 <H.RightSection>
                     <H.LevelSelect onChange={(e) => setSelectedLevel(e.target.value)}>
-                        <option value="level1">Level 1</option>
-                        <option value="level2">Level 2</option>
-                        <option value="level3">Level 3</option>
+                        <option value="LEVEL_1">Level 1</option>
+                        <option value="LEVEL_2">Level 2</option>
+                        <option value="LEVEL_3">Level 3</option>
                     </H.LevelSelect>
                     <H.Timer>{timeElapsed}</H.Timer>                
                 </H.RightSection>
