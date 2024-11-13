@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import * as G from './Level1Style'; // 스타일링
+import * as G from './GameStyle';
 import Modal from '../modal/Modal';
+import PropTypes from 'prop-types';
 
-const Level = ({ levelData, onStart, onStop, onReset, elapsedTime }) => {
+const Game = ({ levelData, onStart, onStop, onReset, elapsedTime }) => {
   const { START_NUM, END_NUM, GRID_SIZE } = levelData;
   const [grid, setGrid] = useState([]);
   const [nextNumber, setNextNumber] = useState(START_NUM);
@@ -94,4 +95,18 @@ const Level = ({ levelData, onStart, onStop, onReset, elapsedTime }) => {
   );
 };
 
-export default Level;
+// PropTypes는 Game 컴포넌트에 대해 설정
+Game.propTypes = {
+  levelData: PropTypes.shape({
+    LEVEL: PropTypes.number.isRequired, 
+    START_NUM: PropTypes.number.isRequired,
+    END_NUM: PropTypes.number.isRequired,
+    GRID_SIZE: PropTypes.number.isRequired,
+  }).isRequired,
+  onStart: PropTypes.func.isRequired,
+  onStop: PropTypes.func.isRequired,
+  onReset: PropTypes.func.isRequired,
+  elapsedTime: PropTypes.string.isRequired,
+};
+
+export default Game;
