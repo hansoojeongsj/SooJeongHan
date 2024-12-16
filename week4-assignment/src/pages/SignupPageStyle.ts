@@ -12,7 +12,7 @@ export const Container = styled.div`
   margin: 0 auto;
 `;
 
-export const Title = styled.h2`
+export const Title = styled.h1`
   font-size: 3rem;
   font-weight: 700;
   margin: 3rem;

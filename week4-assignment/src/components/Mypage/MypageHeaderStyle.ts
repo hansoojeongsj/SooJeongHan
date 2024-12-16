@@ -11,7 +11,7 @@ export const HeaderContainer = styled.div`
   
 `;
 
-export const Title = styled.p`
+export const Title = styled.h1`
   font-size: 2.5rem;
   text-align: center;
   flex: 1;
