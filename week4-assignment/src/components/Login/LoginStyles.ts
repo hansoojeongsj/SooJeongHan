@@ -21,12 +21,12 @@ export const Title = styled.h1`
 `;
 
 export const InputWrapper = styled.div`
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
   width: 100%;
 `;
 
 export const Input = styled.input`
-  padding: 10px;
+  padding: 1rem;
   font-size: 1.6rem;
   width: 100%;
   box-sizing: border-box;
@@ -36,7 +36,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  padding: 10px 15px;
+  padding: 1rem 1.5rem;
   font-size: 1.6rem;
   background-color: ${({ theme }) => theme.colors.green};
   color: white;
@@ -55,8 +55,8 @@ export const BottomButton = styled.button`
   background: none;
   border: none;
   color: ${({ theme }) => theme.colors.gray};
-  font-size: 14px;
-  margin-top: 15px;
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
   cursor: pointer;
   text-decoration: underline;
   width: 100%;

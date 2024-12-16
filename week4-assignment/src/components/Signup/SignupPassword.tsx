@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Input, Label, InputWrapper, IconButton,ErrorText } from './SignupStyles';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 

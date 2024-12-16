@@ -3,22 +3,22 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './styles/GlobalStyle';
 import theme from './styles/theme';
 
-import Login from './pages/LoginPage';
-import Signup from './pages/SignupPage';
-import MyPage from './pages/MypagePage';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
+import MypagePage from './pages/MypagePage';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />,
+    element: <LoginPage />,
   },
   {
     path: "/signup",
-    element: <Signup />,
+    element: <SignupPage />,
   },
   {
     path: "/mypage",
-    element: <MyPage />,
+    element: <MypagePage />,
   },
 ]);
 

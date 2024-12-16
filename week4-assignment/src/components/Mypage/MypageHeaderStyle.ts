@@ -24,7 +24,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Button = styled.button`
-  padding: 5px 10px;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.white};
   font-weight: 700;
@@ -32,7 +32,7 @@ export const Button = styled.button`
 `;
 
 export const LogoutButton = styled.button`
-  padding: 5px 10px;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.white};
   font-size: 1.7rem;

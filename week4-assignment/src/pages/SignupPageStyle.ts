@@ -21,12 +21,12 @@ export const Title = styled.h1`
 export const BottomTextWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 15px;
-  font-size: 14px;
+  margin-top: 1.5rem;
+  font-size: 1.4rem;
   
   span {
     color: ${({ theme }) => theme.colors.black};
-    margin-right: 8px;
+    margin-right: 0.8rem
   }
 `;
 
@@ -34,7 +34,7 @@ export const BottomButton = styled.button`
   background: none;
   border: none;
   color: ${({ theme }) => theme.colors.gray};
-  font-size: 14px;
+  font-size: 1.4rem;
   cursor: pointer;
   text-decoration: underline;
   transition: color 0.3s ease;

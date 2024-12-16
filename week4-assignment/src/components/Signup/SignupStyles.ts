@@ -5,18 +5,18 @@ export const Label = styled.label`
   text-align: left;
   font-size: 1.6rem;
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
   color: ${({ theme }) => theme.colors.black};
 `;
 
 export const InputWrapper = styled.div`
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
   width: 100%;
-  position: relative; /* 상대 위치 설정 */
+  position: relative;
 `;
 
 export const Input = styled.input`
-  padding: 10px;
+  padding: 1rem;
   font-size: 1.6rem;
   width: 100%;
   box-sizing: border-box;
@@ -27,17 +27,17 @@ export const Input = styled.input`
 
 export const IconButton = styled.button`
   position: absolute;
-  right: 10px;
+  right: 1rem;
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
-  padding: 5px;
+  padding: 0.5rem;
 `;
 
 export const Button = styled.button`
-  padding: 10px 15px;
+  padding: 1rem 1.5rem;
   font-size: 1.6rem;
   background-color: ${({ theme }) => theme.colors.green};
   color: white;
@@ -56,6 +56,6 @@ export const ErrorText = styled.div`
   color: ${({ theme }) => theme.colors.gray};
   text-align: left;
   font-size: 1.2rem;
-  margin-bottom: 10px; 
+  margin-bottom: 1rem; 
   width: 100%;
 `;

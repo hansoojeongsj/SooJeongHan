@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Container, Title, Input, Button, MypageSection } from './MypageComponentStyle';
 import { useNavigate } from 'react-router-dom';
 import { updateUserInfo } from '../../apis/infoApi';

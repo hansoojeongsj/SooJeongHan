@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Input, Label, InputWrapper, ErrorText } from './SignupStyles';
 
 interface SignupNameProps {
