@@ -31,7 +31,7 @@ const SignupPage = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post('http://211.188.53.75:8080/user', {
+      const response = await axios.post('http://223.130.135.50:8085/user', {
         username,
         hobby,
         password,

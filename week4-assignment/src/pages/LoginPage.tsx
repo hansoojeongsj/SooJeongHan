@@ -13,7 +13,7 @@ const LoginPage = () => {
   const handleLogin = async (loginData: LoginData) => {
 
     try {
-      const response: AxiosResponse<{ result: { token: string } }> = await axios.post('http://211.188.53.75:8080/login', {
+      const response: AxiosResponse<{ result: { token: string } }> = await axios.post('http://223.130.135.50:8085/login', {
         username: loginData.username,
         password: loginData.password,
       });

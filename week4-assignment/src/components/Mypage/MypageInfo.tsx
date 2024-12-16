@@ -44,7 +44,7 @@ const MypageInfo = () => {
     }
 
     try {
-      const response = await axios.put('http://211.188.53.75:8080/user', requestData, {
+      const response = await axios.put('http://223.130.135.50:8085/user', requestData, {
         headers: {
           token: token,
         },

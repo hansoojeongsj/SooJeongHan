@@ -28,7 +28,7 @@ const MypageHobby = () => {
 
     try {
       const response: AxiosResponse<MyHobbyResponse> = await axios.get(
-        'http://211.188.53.75:8080/user/my-hobby',
+        'http://223.130.135.50:8085/user/my-hobby',
         {
           headers: {
             token: token,
@@ -67,7 +67,7 @@ const MypageHobby = () => {
 
     try {
       const response: AxiosResponse<OtherHobbyResponse> = await axios.get(
-        `http://211.188.53.75:8080/user/${userNumber}/hobby`,
+        `http://223.130.135.50:8085/user/${userNumber}/hobby`,
         {
           headers: {
             token: token,
