@@ -1,9 +1,10 @@
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
+import axiosInstance from './axiosInstance';
 import { MyHobbyResponse, OtherHobbyResponse } from '../types/types';
 
 export const fetchMyHobby = async (token: string) => {
-  const response: AxiosResponse<MyHobbyResponse> = await axios.get(
-    `${import.meta.env.VITE_API_BASE_URL}/user/my-hobby`,
+  const response: AxiosResponse<MyHobbyResponse> = await axiosInstance.get(
+    '/user/my-hobby',
     { headers: { token } }
   );
 
@@ -14,8 +15,8 @@ export const fetchMyHobby = async (token: string) => {
 };
 
 export const fetchOtherHobby = async (token: string, no: string) => {
-  const response: AxiosResponse<OtherHobbyResponse> = await axios.get(
-    `${import.meta.env.VITE_API_BASE_URL}/user/${no}/hobby`,
+  const response: AxiosResponse<OtherHobbyResponse> = await axiosInstance.get(
+    `/user/${no}/hobby`,
     { headers: { token } }
   );
 
