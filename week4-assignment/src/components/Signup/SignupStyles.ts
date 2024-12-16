@@ -45,7 +45,9 @@ export const Button = styled.button`
   border-radius: 4px;
   cursor: pointer;
   width: 100%;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.darkgreen};
@@ -56,6 +58,6 @@ export const ErrorText = styled.div`
   color: ${({ theme }) => theme.colors.gray};
   text-align: left;
   font-size: 1.2rem;
-  margin-bottom: 1rem; 
+  margin-bottom: 1rem;
   width: 100%;
 `;

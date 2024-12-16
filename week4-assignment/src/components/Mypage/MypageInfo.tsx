@@ -1,15 +1,23 @@
 import { useState } from 'react';
-import { Container, Title, Input, Button, MypageSection } from './MypageComponentStyle';
+import {
+  Container,
+  Title,
+  Input,
+  Button,
+  MypageSection,
+} from './MypageComponentStyle';
 import { useNavigate } from 'react-router-dom';
 import { updateUserInfo } from '../../apis/infoApi';
-import { onErrorResponse } from '../../utils/errorHandler'; 
+import { onErrorResponse } from '../../utils/errorHandler';
 
 const MypageInfo = () => {
   const navigate = useNavigate();
   const [newPassword, setNewPassword] = useState('');
-  const [newHobby, setNewHobby] = useState(''); 
+  const [newHobby, setNewHobby] = useState('');
 
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handlePasswordChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setNewPassword(e.target.value);
   };
 
@@ -23,12 +31,15 @@ const MypageInfo = () => {
       return;
     }
 
-    if ((newPassword && newPassword.length > 8) || (newHobby && newHobby.length > 8)) {
+    if (
+      (newPassword && newPassword.length > 8) ||
+      (newHobby && newHobby.length > 8)
+    ) {
       alert('비밀번호와 취미는 8자 이하로 입력해주세요!');
       return;
     }
 
-    const requestData: { hobby?: string, password?: string } = {};
+    const requestData: { hobby?: string; password?: string } = {};
 
     if (newPassword) {
       requestData.password = newPassword;

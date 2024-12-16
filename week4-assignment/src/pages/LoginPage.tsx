@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { loginApi } from '../apis/authApi';
 import { onErrorResponse } from '../utils/errorHandler';
 import Login from '../components/Login/Login';
-import { LoginData } from '../types/types';  
+import { LoginData } from '../types/types';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -24,9 +24,7 @@ const LoginPage = () => {
     }
   };
 
-  return (
-    <Login onLogin={handleLogin} />
-  );
+  return <Login onLogin={handleLogin} />;
 };
 
 export default LoginPage;

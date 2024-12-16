@@ -21,12 +21,13 @@ export const onErrorResponse = (error: unknown) => {
         break;
       case 404:
         errorMessage =
-          code === '00' 
-          ? '유효하지 않은 경로입니다. 경로를 확인해 주세요.' 
-          : '존재하지 않는 사용자 번호입니다.';
+          code === '00'
+            ? '유효하지 않은 경로입니다. 경로를 확인해 주세요.'
+            : '존재하지 않는 사용자 번호입니다.';
         break;
       case 409:
-        errorMessage = '이미 존재하는 아이디입니다. 다른 아이디를 사용해 주세요.';
+        errorMessage =
+          '이미 존재하는 아이디입니다. 다른 아이디를 사용해 주세요.';
         break;
       default:
         errorMessage = '알 수 없는 오류가 발생했습니다. 다시 시도해주세요.';

@@ -11,7 +11,7 @@ const MypageHeader = ({ onComponentSelect }: MypageHeaderProps) => {
   const handleLogout = (): void => {
     localStorage.removeItem('token');
     navigate('/');
-  };
+  };  
 
   return (
     <HeaderContainer>

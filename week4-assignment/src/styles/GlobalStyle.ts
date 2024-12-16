@@ -4,7 +4,7 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     --vh: 100%;
   background: ${({ theme }) => theme.colors.background};;
-  }
+  }  
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,

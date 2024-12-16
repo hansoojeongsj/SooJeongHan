@@ -23,10 +23,10 @@ export const BottomTextWrapper = styled.div`
   align-items: center;
   margin-top: 1.5rem;
   font-size: 1.4rem;
-  
+
   span {
     color: ${({ theme }) => theme.colors.black};
-    margin-right: 0.8rem
+    margin-right: 0.8rem;
   }
 `;
 

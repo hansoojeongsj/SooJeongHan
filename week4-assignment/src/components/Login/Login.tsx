@@ -1,5 +1,12 @@
 import { useState } from 'react';
-import { Container, Title, InputWrapper, Input, Button, BottomButton } from './LoginStyles';
+import {
+  Container,
+  Title,
+  InputWrapper,
+  Input,
+  Button,
+  BottomButton,
+} from './LoginStyles';
 import { useNavigate } from 'react-router-dom';
 
 interface LoginData {
@@ -8,12 +15,15 @@ interface LoginData {
 }
 
 interface LoginProps {
-  onLogin: (loginData: LoginData) => void; 
+  onLogin: (loginData: LoginData) => void;
 }
 
 const Login = ({ onLogin }: LoginProps) => {
   const navigate = useNavigate();
-  const [loginData, setLoginData] = useState<LoginData>({ username: '', password: '' });
+  const [loginData, setLoginData] = useState<LoginData>({
+    username: '',
+    password: '',
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

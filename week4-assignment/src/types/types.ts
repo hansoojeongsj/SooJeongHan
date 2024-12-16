@@ -26,10 +26,12 @@ export interface OtherHobbyResponse {
     hobby: string;
   };
 }
+
 export interface UpdateRequestData {
   hobby?: string;
   password?: string;
 }
+
 export interface InfoResponse {
   result: {
     hobby?: string;

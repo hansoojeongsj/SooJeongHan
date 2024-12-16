@@ -8,7 +8,6 @@ export const HeaderContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.darkgreen};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 700;
-  
 `;
 
 export const Title = styled.h1`
@@ -36,5 +35,4 @@ export const LogoutButton = styled.button`
   cursor: pointer;
   color: ${({ theme }) => theme.colors.white};
   font-size: 1.7rem;
-
 `;

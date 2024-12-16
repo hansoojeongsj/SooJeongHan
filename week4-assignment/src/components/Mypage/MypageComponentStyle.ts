@@ -10,7 +10,6 @@ export const Container = styled.div`
   justify-content: center;
   margin: 1rem auto;
   color: ${({ theme }) => theme.colors.black};
-
 `;
 
 export const Title = styled.h1`
@@ -29,7 +28,7 @@ export const MypageSection = styled.div`
   }
 
   p {
-    margin-top:1rem;
+    margin-top: 1rem;
     font-size: 1.5rem;
     color: ${({ theme }) => theme.colors.darkgreen};
     font-weight: 600;
@@ -57,7 +56,9 @@ export const Button = styled.button`
   border: none;
   border-radius: 4px;
   width: 100%;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.lightgreen};
@@ -65,7 +66,7 @@ export const Button = styled.button`
 `;
 
 export const OtherHobby = styled.p`
-  margin-top:1rem;
+  margin-top: 1rem;
   font-size: 1.5rem;
   color: ${({ theme }) => theme.colors.darkgreen};
   font-weight: 600;

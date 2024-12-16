@@ -44,7 +44,9 @@ export const Button = styled.button`
   border-radius: 4px;
   cursor: pointer;
   width: 100%;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.darkgreen};

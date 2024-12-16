@@ -32,7 +32,7 @@ const SignupHobby = ({ onSetHobby, onSignupComplete }: SignupHobbyProps) => {
   };
 
   return (
-<>
+    <>
       <Label htmlFor="hobby">취미</Label>
       <InputWrapper>
         <Input
@@ -47,13 +47,13 @@ const SignupHobby = ({ onSetHobby, onSignupComplete }: SignupHobbyProps) => {
 
       {error && <ErrorText>{error}</ErrorText>}
 
-      <Button 
+      <Button
         onClick={handleSignup}
         disabled={hobbyInput.trim() === '' || hobbyInput.length > 8}
       >
         회원가입
       </Button>
-      </>
+    </>
   );
 };
 

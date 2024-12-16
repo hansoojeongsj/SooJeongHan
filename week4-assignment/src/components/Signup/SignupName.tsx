@@ -3,7 +3,7 @@ import { Button, Input, Label, InputWrapper, ErrorText } from './SignupStyles';
 
 interface SignupNameProps {
   onNext: () => void;
-  onSetName: (username: string) => void; 
+  onSetName: (username: string) => void;
 }
 
 const SignupName = ({ onNext, onSetName }: SignupNameProps) => {
@@ -12,7 +12,7 @@ const SignupName = ({ onNext, onSetName }: SignupNameProps) => {
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.target.value;
-    setUsername(inputName); 
+    setUsername(inputName);
 
     if (inputName.length > 8) {
       setError('이름은 8이하로 입력해 주세요');
@@ -40,15 +40,14 @@ const SignupName = ({ onNext, onSetName }: SignupNameProps) => {
         />
       </InputWrapper>
 
-      {error && <ErrorText>{error}</ErrorText>} 
+      {error && <ErrorText>{error}</ErrorText>}
 
-      <Button 
-        onClick={handleNextClick} 
-        disabled={username.trim() === '' || username.length > 8} 
+      <Button
+        onClick={handleNextClick}
+        disabled={username.trim() === '' || username.length > 8}
       >
         다음
       </Button>
-
     </>
   );
 };

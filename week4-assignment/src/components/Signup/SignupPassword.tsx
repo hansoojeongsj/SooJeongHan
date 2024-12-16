@@ -1,6 +1,13 @@
 import { useState } from 'react';
-import { Button, Input, Label, InputWrapper, IconButton,ErrorText } from './SignupStyles';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
+import {
+  Button,
+  Input,
+  Label,
+  InputWrapper,
+  IconButton,
+  ErrorText,
+} from './SignupStyles';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 interface SignupPasswordProps {
   onNext: () => void;
@@ -8,10 +15,10 @@ interface SignupPasswordProps {
 }
 
 const SignupPassword = ({ onNext, onSetPassword }: SignupPasswordProps) => {
-  const [password, setPassword] = useState(''); 
-  const [confirmPassword, setConfirmPassword] = useState(''); 
-  const [error, setError] = useState(''); 
-  const [showPassword, setShowPassword] = useState(false); 
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
@@ -42,13 +49,11 @@ const SignupPassword = ({ onNext, onSetPassword }: SignupPasswordProps) => {
         setError('');
       }
     }
-
   };
 
   const handleNextClick = () => {
-
-    setError(''); 
-    onSetPassword(password);  
+    setError('');
+    onSetPassword(password);
     onNext();
   };
 
@@ -68,11 +73,8 @@ const SignupPassword = ({ onNext, onSetPassword }: SignupPasswordProps) => {
           onChange={handlePasswordChange}
           placeholder="비밀번호를 입력해주세요"
         />
-        <IconButton 
-          type="button" 
-          onClick={togglePasswordVisibility} 
-        >
-          {showPassword ? <FaEye /> : <FaEyeSlash />} 
+        <IconButton type="button" onClick={togglePasswordVisibility}>
+          {showPassword ? <FaEye /> : <FaEyeSlash />}
         </IconButton>
       </InputWrapper>
 
@@ -90,9 +92,14 @@ const SignupPassword = ({ onNext, onSetPassword }: SignupPasswordProps) => {
 
       {error && <ErrorText>{error}</ErrorText>}
 
-      <Button 
-        onClick={handleNextClick} 
-        disabled={password.trim() === '' || confirmPassword.trim() === '' || password !== confirmPassword || password.length > 8}
+      <Button
+        onClick={handleNextClick}
+        disabled={
+          password.trim() === '' ||
+          confirmPassword.trim() === '' ||
+          password !== confirmPassword ||
+          password.length > 8
+        }
       >
         다음
       </Button>
