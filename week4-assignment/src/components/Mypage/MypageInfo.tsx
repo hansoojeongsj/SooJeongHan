@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { Container, Title, Input, Button, MypageSection } from './MypageComponentStyle';
 import { useNavigate } from 'react-router-dom';
+import { updateUserInfo } from '../../apis/infoApi';
+import { onErrorResponse } from '../../utils/errorHandler'; 
 
 const MypageInfo = () => {
   const navigate = useNavigate();
@@ -44,11 +45,7 @@ const MypageInfo = () => {
     }
 
     try {
-      const response = await axios.put('http://223.130.135.50:8085/user', requestData, {
-        headers: {
-          token: token,
-        },
-      });
+      const response = await updateUserInfo(token, requestData);
 
       if (response.status === 200) {
         alert('정보가 수정되었습니다!');
@@ -59,16 +56,7 @@ const MypageInfo = () => {
         alert('정보 수정에 실패했습니다!');
       }
     } catch (error: unknown) {
-      if (axios.isAxiosError(error)) {
-        const { code } = (error.response?.data as { code: string });  // 타입 명시
-        if (code === '00') {
-          alert('입력 값이 잘못되었습니다. 비밀번호와 취미는 8자 이하로 입력해주세요.');
-        } else {
-          alert('서버와의 연결에 문제가 발생했습니다.');
-        }
-      } else {
-        alert('서버와의 연결에 문제가 발생했습니다.');
-      }
+      alert(onErrorResponse(error));
     }
   };
 
