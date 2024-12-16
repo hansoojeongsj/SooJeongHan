@@ -7,8 +7,8 @@ interface SignupNameProps {
 }
 
 const SignupName = ({ onNext, onSetName }: SignupNameProps) => {
-  const [username, setUsername] = useState<string>('');
-  const [error, setError] = useState<string>('');
+  const [username, setUsername] = useState('');
+  const [error, setError] = useState('');
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.target.value;

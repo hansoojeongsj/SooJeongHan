@@ -8,10 +8,10 @@ interface SignupPasswordProps {
 }
 
 const SignupPassword = ({ onNext, onSetPassword }: SignupPasswordProps) => {
-  const [password, setPassword] = useState<string>(''); 
-  const [confirmPassword, setConfirmPassword] = useState<string>(''); 
-  const [error, setError] = useState<string>(''); 
-  const [showPassword, setShowPassword] = useState<boolean>(false); 
+  const [password, setPassword] = useState(''); 
+  const [confirmPassword, setConfirmPassword] = useState(''); 
+  const [error, setError] = useState(''); 
+  const [showPassword, setShowPassword] = useState(false); 
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;

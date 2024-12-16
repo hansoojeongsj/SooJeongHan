@@ -4,9 +4,9 @@ import { onErrorResponse } from '../../utils/errorHandler';
 import { Container, Title, MypageSection, Input, Button, OtherHobby } from './MypageComponentStyle';
 
 const MypageHobby = () => {
-  const [userNumber, setUserNumber] = useState<string>('');
-  const [myHobby, setMyHobby] = useState<string>(''); 
-  const [otherHobby, setOtherHobby] = useState<string>('');
+  const [userNumber, setUserNumber] = useState('');
+  const [myHobby, setMyHobby] = useState(''); 
+  const [otherHobby, setOtherHobby] = useState('');
   
   const token = localStorage.getItem('token');
 

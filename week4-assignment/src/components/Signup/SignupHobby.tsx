@@ -7,8 +7,8 @@ interface SignupHobbyProps {
 }
 
 const SignupHobby = ({ onSetHobby, onSignupComplete }: SignupHobbyProps) => {
-  const [hobbyInput, setHobbyInput] = useState<string>('');
-  const [error, setError] = useState<string>('');
+  const [hobbyInput, setHobbyInput] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
     if (hobbyInput.trim() !== '') {

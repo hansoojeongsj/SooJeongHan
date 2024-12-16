@@ -6,8 +6,8 @@ import { onErrorResponse } from '../../utils/errorHandler';
 
 const MypageInfo = () => {
   const navigate = useNavigate();
-  const [newPassword, setNewPassword] = useState<string>('');
-  const [newHobby, setNewHobby] = useState<string>(''); 
+  const [newPassword, setNewPassword] = useState('');
+  const [newHobby, setNewHobby] = useState(''); 
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setNewPassword(e.target.value);

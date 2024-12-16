@@ -8,10 +8,10 @@ import { onErrorResponse } from '../utils/errorHandler'
 import { Container, Title, BottomTextWrapper, BottomButton } from './SignupPageStyle';
 
 const SignupPage = () => {
-  const [username, setUsername] = useState<string>(''); 
-  const [password, setPassword] = useState<string>(''); 
-  const [hobby, setHobby] = useState<string>(''); 
-  const [step, setStep] = useState<number>(1); 
+  const [username, setUsername] = useState(''); 
+  const [password, setPassword] = useState(''); 
+  const [hobby, setHobby] = useState(''); 
+  const [step, setStep] = useState(1); 
   const navigate = useNavigate();
 
   const handleStepChange = (newStep: number) => {
